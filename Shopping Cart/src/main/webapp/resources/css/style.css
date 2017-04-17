@@ -1,0 +1,37 @@
+@CHARSET "ISO-8859-1";
+.jumbotron
+{
+background-color: Lavendar;
+font-family: Lucida Calligraphy;
+color: RoyalBlue;
+}
+.navbar
+{
+/* background-color: #191970; */
+background-color: navy;
+border: none;
+}
+.menu
+{
+color: white;
+}
+/* body
+{
+	background-image: url(img/wallpaper.jpg);
+	background-size: cover;
+	background-color: blue;
+} */
+.container
+{
+	background-color: ;
+}
+.item
+{
+	height: 450px;
+	/* width: 900px; */
+}
+.price
+{
+	text-align: right;
+	size: 28;
+}
