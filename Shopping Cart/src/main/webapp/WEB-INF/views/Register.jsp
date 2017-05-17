@@ -7,6 +7,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -22,6 +24,7 @@
 <title>Registration Page</title>
 </head>
 <body>
+<jsp:include page="Header.jsp"></jsp:include>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
@@ -32,61 +35,29 @@
 						</h1>
 					</div>
 					<div class="panel-body">
-						<form>
+						<form:form action="registration" commandName="user">
 							<div class="form-group">
-								<label for="Name">Name:</label> <input type="text"
-									class="form-control" id="name" />
+								<span
+									class="glyphicon glyphicon-user"></span> UserName: <form:input type="text" path="name" class="form-control"/>
 							</div>
 							<div class="form-group">
-								<label for="Email"><span
-									class="glyphicon glyphicon-envelope"></span>Email: </label> <input
-									type="email" class="form-control" id="Email" />
+								<span
+									class="glyphicon glyphicon-earphone"></span> Contact Number<form:input type="text" path="contact" class="form-control"/>
 							</div>
 							<div class="form-group">
-								<label for="uname"><span
-									class="glyphicon glyphicon-user"></span>UserName:</label> <input
-									type="text" class="form-control" id="uname" />
+								<span
+									class="glyphicon glyphicon-envelope"></span> Email: <form:input type="text" path="id" class="form-control"/>
 							</div>
 							<div class="form-group">
-								<label for="Pwd"><span class="halflings-lock"></span>Password:
-								</label> <input type="password" class="form-control" id="Pwd" />
+								<span class="glyphicon glyphicon-lock"></span> Password:
+								 <form:input type="password" path="password" class="form-control"/>
 							</div>
 							<div class="form-group">
-								<label for="Confpwd"><span class="halflings-lock"></span>Confirm
-									Password: </label> <input type="password" class="form-control"
-									id="Confpwd" />
+							Role:
+							<form:input type="text" path="role" value="user" class="form-control"/>
 							</div>
-							<div class="form-group">
-								<label for="dob"><span
-									class="glyphicon glyphicon-calendar"></span>Date Of Birth: </label> <input
-									type="date" class="form-control" id="dob" />
-							</div>
-							<div class="form-group">
-								<label for="gender">Gender: </label>
-								<div class="radio-inline">
-									<label><input type="radio" name="male">Male</label>
-								</div>
-								<div class="radio-inline">
-									<label><input type="radio" name="female">Female</label>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="address">Address: </label>
-								<textarea class="form-control" rows="4" id="address"></textarea>
-							</div>
-							<div class="form-group">
-								<label for="country">Country: </label> <select
-									class="form-control" id="country">
-									<option>India</option>
-									<option>USA</option>
-									<option>China</option>
-									<option>UK</option>
-									<option>Russia</option>
-									<option>Germany</option>
-								</select>
-							</div>
-							<button class="btn btn-primary">Submit</button>
-						</form>
+							<input type="submit" class="btn btn-primary" class="form-control"/>
+						</form:form>
 					</div>
 				</div>
 			</div>
