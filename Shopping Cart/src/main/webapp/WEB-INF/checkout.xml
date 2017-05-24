@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+	http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
+
+<!-- <on-start>
+	demohandler is java class available through annotated Demohandler.java class.here we are calling it’s initFlow() method.
+	  <evaluate expression="carthandler.initFlow()" result="mycart"/>
+</on-start> -->
+<var name="mycart" class="com.niit.shoppingcart.domain.MyCart" />
+<var name="saddr" class="com.niit.shoppingcart.domain.Address" />
+<view-state id="start" view="payment" model="mycart">
+<transition on="next" to="address" />
+</view-state>
+<view-state id="address" view="ShippingAddress" model="saddr">
+		<transition on="submit" to="thankyou" />
+</view-state>
+ 
+<!-- <view-state id="ConfirmDetails" view="confirmDetails" model="mycart">
+		<transition on="edit" to="start" />
+		<transition on="submit" to="thankyou" />
+</view-state> -->
+<end-state id="thankyou" view="ThankYou" />
+</flow>

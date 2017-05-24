@@ -92,6 +92,7 @@ public class SpringSecurityController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String userID = auth.getName();
 		session.setAttribute("loggedInUser", userID);
+		session.setAttribute("IsUserLoggedIn", true);
 
 		if (request.isUserInRole("admin")) {
 
@@ -106,10 +107,10 @@ public class SpringSecurityController {
 			
 			session.setAttribute("myCart", myCart);
 			// Fetch the myCart list based on user ID
-			List<MyCart> cartList = cartDAO.list(userID);
+			/*List<MyCart> cartList = cartDAO.list(userID);
 			session.setAttribute("cartList", cartList);
 			session.setAttribute("cartSize", cartList.size());
-			session.setAttribute("totalAmount", cartDAO.getTotalAmount(userID));
+			session.setAttribute("totalAmount", cartDAO.getTotalAmount(userID));*/
 
 			
 

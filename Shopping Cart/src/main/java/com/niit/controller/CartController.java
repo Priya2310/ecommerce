@@ -105,7 +105,7 @@ public class CartController
 	public ModelAndView removeFromCart(@PathVariable("id") int id) {
 		log.debug("Starting of removeFromCart in CartController");
 
-		ModelAndView mv = new ModelAndView("redirect:/MyCart");
+		ModelAndView mv = new ModelAndView("redirect:/myCart");
 		// Check whether products are there for this category or not
 
 		if (mycartDAO.delete(id) == true) {
@@ -123,7 +123,7 @@ public class CartController
 
 	}
 	
-	@RequestMapping("/checkout")
+	//@RequestMapping("/checkout")
 	public String checkout()
 	{
 		return "payment";

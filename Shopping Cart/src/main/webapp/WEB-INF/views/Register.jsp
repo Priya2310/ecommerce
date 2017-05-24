@@ -22,6 +22,24 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="resources/css/style.css">
 <title>Registration Page</title>
+<script type="text/javascript">
+function validate(){  
+	var num=document.registerform.mob.value;
+	var x=document.registerform.email.value;
+	var atposition=x.indexOf("@");  
+	var dotposition=x.lastIndexOf(".");
+	if (isNaN(num)){  
+	 	alert("Enter only numeric value for mobile no.") 
+	  return false;  
+	}else{  
+	  return true;  
+	  }  
+	if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length){  
+		  alert("Please enter a valid e-mail address \n atpostion:"+atposition+"\n dotposition:"+dotposition);  
+		  return false;  
+		  }  
+	}  
+</script>
 </head>
 <body>
 <jsp:include page="Header.jsp"></jsp:include>
@@ -35,22 +53,22 @@
 						</h1>
 					</div>
 					<div class="panel-body">
-						<form:form action="registration" commandName="user">
+						<form:form action="registration" commandName="user" name="registerform" onsubmit="return validate()">
 							<div class="form-group">
 								<span
-									class="glyphicon glyphicon-user"></span> UserName: <form:input type="text" path="name" class="form-control"/>
+									class="glyphicon glyphicon-user"></span> UserName: <form:input type="text" path="name" class="form-control" required="true"/>
 							</div>
 							<div class="form-group">
 								<span
-									class="glyphicon glyphicon-earphone"></span> Contact Number<form:input type="text" path="contact" class="form-control"/>
+									class="glyphicon glyphicon-earphone"></span> Contact Number:<form:input type="text" path="contact" id="mob" class="form-control" required="true"/>
 							</div>
 							<div class="form-group">
 								<span
-									class="glyphicon glyphicon-envelope"></span> Email: <form:input type="text" path="id" class="form-control"/>
+									class="glyphicon glyphicon-envelope"></span> Email: <form:input type="text" path="id" id="email" class="form-control" required="true"/>
 							</div>
 							<div class="form-group">
 								<span class="glyphicon glyphicon-lock"></span> Password:
-								 <form:input type="password" path="password" class="form-control"/>
+								 <form:input type="password" path="password" class="form-control" required="true"/>
 							</div>
 							<div class="form-group">
 							Role:

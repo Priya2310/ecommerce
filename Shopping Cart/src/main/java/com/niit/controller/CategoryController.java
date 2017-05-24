@@ -127,7 +127,7 @@ public class CategoryController {
 		return mv;
 	}
 	
-	@RequestMapping("/manage_category_edit/manage_category_update")
+	@RequestMapping("/manage_category_update")
 	public ModelAndView  updateCategory(@RequestParam("id") String id, 
 			@RequestParam("name") String name,  @RequestParam("description") String desc)
 	{

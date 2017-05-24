@@ -20,7 +20,7 @@ import com.niit.shoppingcart.domain.Product;
 import com.niit.shoppingcart.domain.Supplier;
 
 @Controller
-@RequestMapping("/manage")
+//@RequestMapping("/manage")
 public class AdminController 
 {
 	@Autowired CategoryDAO categoryDAO;
@@ -32,13 +32,13 @@ private static  Logger log = LoggerFactory.getLogger(AdminController.class);
 	
 	
 	
-	@RequestMapping("/Categories")
+	@RequestMapping("/manageCategories")
 	public ModelAndView manageCategories()
 	{
 		
 		log.debug("Starting of the method manageCategories");
 		
-		ModelAndView mv = new ModelAndView("admin/Category");
+		ModelAndView mv = new ModelAndView("Category");
 		mv.addObject("isAdminClickedCategories", "true");
 		mv.addObject("isAdmin", "true");
 		List<Category> categoryList=categoryDAO.list();
@@ -49,11 +49,11 @@ private static  Logger log = LoggerFactory.getLogger(AdminController.class);
 		
 		
 	}
-	@RequestMapping("/Supplier")
+	@RequestMapping("/manageSupplier")
 	public ModelAndView manageSuppliers()
 	{
 		log.debug("Starting of the method manageSuppliers");
-		ModelAndView mv = new ModelAndView("admin/Supplier");
+		ModelAndView mv = new ModelAndView("Supplier");
 		mv.addObject("isAdmin", "true");
 		mv.addObject("isAdminClickedSuppliers", "true");
 		
@@ -64,7 +64,7 @@ private static  Logger log = LoggerFactory.getLogger(AdminController.class);
 		
 		
 	}
-	@RequestMapping("/Products")
+	@RequestMapping("/manageProducts")
 	public String manageProducts(Model model)
 	{
 		log.debug("Starting of the method manageProducts");
@@ -78,7 +78,7 @@ private static  Logger log = LoggerFactory.getLogger(AdminController.class);
 		model.addAttribute("categoryList", categoryList);
 		model.addAttribute("supplierList", supplierList);
 		log.debug("Ending of the method manageProducts");
-		return "/admin/Product";
+		return "Product";
 		
 		
 	}

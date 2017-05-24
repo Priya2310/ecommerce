@@ -5,15 +5,30 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Payment Method</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+<jsp:include page="Header.jsp"></jsp:include>
 <div class="container">
+<div class="panel panel-default">
+<div class="panel panel-heading">
 <h4>Payment Method</h4>
+</div>
+<div class="panel panel-content">
 Select the payment method<br/>
 <input type="radio">Cash on delivery<br>
-<input type="radio">Net Banking<br>
+<input type="radio">Card on delivery<br>
 <input type="radio">Debit/Credit Card<br>
-<a href="addressform"><input type="button" value="next"></a>
+<!-- <button id="next" name="_eventId_next">Next</button> -->
+<a href="${flowExecutionUrl}&_eventId=next"><input type="button" class="btn-btn default" value="Next" /></a>
+<!-- <input type="submit" name="_eventId_submit" value="Submit"> -->
+</div>
+</div>
 </div>
 </body>
 </html>

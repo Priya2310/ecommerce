@@ -13,22 +13,7 @@
 <body>
 	<jsp:include page="Header.jsp"></jsp:include>
 
-	<div class="jumbotron">
-		<h1>
-			<center>
-				<b>Welcome To Shopping Cart</b>
-			</center>
-		</h1>
-	</div>
-	<div class="container">
-		<div class="admin menu">
-			<sec:authorize access="hasAuthority('admin')">
-
-				<jsp:include page="admin/AdminHome.jsp"></jsp:include>
-
-			</sec:authorize>
-		</div>
-		</div>
+	
 		<div class="container">
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 
@@ -70,9 +55,8 @@
 		<script src="resources/js/bootstrap.js"></script>
 </body>
 <br>
-<footer>
-<center>
-	<a href="AboutUs">About Us</a> <a href="ContactUs">Contact Us</a>
-</center>
+<footer align="right">
+	<h4>Contact Us at:</h4>
+	<h6>admin@shoppingcart.com</h6>
 </footer>
 </html>

@@ -22,13 +22,13 @@ public class AddressController
 	
 	private static Logger log= LoggerFactory.getLogger(AddressController.class);
 	
-	@RequestMapping("/addressform")
+	//@RequestMapping("/addressform")
 	public String address()
 	{
 		return "ShippingAddress";
 	}
 	
-	@RequestMapping("/addAddress")
+	//@RequestMapping("/addAddress")
 	public ModelAndView addAddress(@RequestParam("line1") String addl1,@RequestParam("line2") String addl2,@RequestParam("city") String city,@RequestParam("pincode") String pin)
 	{
 		log.debug("Start of add address method");
@@ -42,7 +42,7 @@ public class AddressController
 		address.setCity(city);
 		address.setPincode(pin);
 		addressDAO.save(address);
-		ModelAndView mv=new ModelAndView("checkout");
+		ModelAndView mv=new ModelAndView("MyCart");
 		return mv;
 	}
 }

@@ -74,7 +74,7 @@ public class ProductController {
 		product.setCategoryID(category.getId());
 		product.setSupplierID(supplier.getId());
 		product.setId(Util.removeComman(product.getId()));
-		productDAO.saveOrUpdate(product);
+		productDAO.save(product);
 
 		FileUtil.upload(path, file, product.getName() + ".jpg");
 		log.debug("Ending of the method addProduct");
@@ -83,6 +83,7 @@ public class ProductController {
 		model.addAttribute("product", new Product());
 		model.addAttribute("categoryList", this.categoryDAO.list());
 		model.addAttribute("category", new Category());
+		model.addAttribute("message", "Product added successfully");
 		
 		return "/Home";
 		// return "redirect:/uploadFile";
@@ -94,7 +95,7 @@ public class ProductController {
 		log.debug("Starting of the method removeProduct");
 		try {
 			productDAO.delete(id);
-			model.addAttribute("message", "Successfully Added");
+			model.addAttribute("message", "Product successfully deleted");
 		} catch (Exception e) {
 			model.addAttribute("message", e.getMessage());
 			e.printStackTrace();
@@ -109,11 +110,45 @@ public class ProductController {
 		log.debug(" Starting of the method editProduct");
 		
 		product = productDAO.getProductById(id);
+		model.addAttribute("isAdminClickedEdit", "true");
 		model.addAttribute("selectedProduct", product);
 		log.debug(" End of the method editProduct");
 		return "forward:/manageProducts";
 	}
+	@RequestMapping("/manage_product_edit/manage_product_update")
+	public String updateProduct(@ModelAttribute("product") Product product,@RequestParam(required = false) MultipartFile image, Model model)
+	{
+		log.debug("Starting of the method update Product");
+		Category category = categoryDAO.getByName(product.getCategory().getName());
+		
+
+		Supplier supplier = supplierDAO.getSupplierByName(product.getSupplier().getName());
 	
+
+		product.setCategory(category);
+		product.setSupplier(supplier);
+
+		product.setCategoryID(category.getId());
+		product.setSupplierID(supplier.getId());
+		product.setId(Util.removeComman(product.getId()));
+		productDAO.update(product);
+
+		FileUtil.upload(path, image, product.getName() + ".jpg");
+		log.debug("Ending of the method update Product");
+		model.addAttribute("isAdminClickedProducts", "true");
+		model.addAttribute("productList", this.productDAO.list());
+		model.addAttribute("product", new Product());
+		model.addAttribute("categoryList", this.categoryDAO.list());
+		model.addAttribute("category", new Category());
+		model.addAttribute("message", "Product successfully updated");
+		
+		return "redirect:homePage";
+	}
+	
+	@RequestMapping("homePage")
+	public String getHomePageRedirected(){
+		return "Home";
+	}
 
 }
 

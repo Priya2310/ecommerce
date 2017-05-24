@@ -84,7 +84,7 @@ public class SupplierController
 		return mv;
 	}
 	
-	@RequestMapping("/manage_supplier_edit/manage_supplier_update")
+	@RequestMapping("/manage_supplier_update")
 	public ModelAndView updateSupplier(@RequestParam("id") String id,@RequestParam("name") String name, @RequestParam("address") String address)
 	{
 		log.debug("Starting of update method");
