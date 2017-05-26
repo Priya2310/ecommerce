@@ -8,12 +8,19 @@
 	demohandler is java class available through annotated Demohandler.java class.here we are calling it’s initFlow() method.
 	  <evaluate expression="carthandler.initFlow()" result="mycart"/>
 </on-start> -->
-<var name="mycart" class="com.niit.shoppingcart.domain.MyCart" />
-<var name="saddr" class="com.niit.shoppingcart.domain.Address" />
-<view-state id="start" view="payment" model="mycart">
-<transition on="next" to="address" />
+<!-- <var name="mycart" class="com.niit.shoppingcart.domain.MyCart" /> -->
+<!-- <var name="saddr" class="com.niit.shoppingcart.domain.Address" /> -->
+<on-start>
+<evaluate expression="addressHandler.initflow()" result="saddr"></evaluate>
+</on-start>
+<view-state id="start" view="ShippingAddress" model="saddr">
+<transition on="next" to="AddAddress" />
 </view-state>
-<view-state id="address" view="ShippingAddress" model="saddr">
+<action-state id="AddAddress">
+ <evaluate expression="addressHandler.addAddress(saddr)" />
+<transition on="true" to="payment" /> 
+ </action-state>
+<view-state id="payment" view="payment" model="saddr">
 		<transition on="submit" to="thankyou" />
 </view-state>
  
